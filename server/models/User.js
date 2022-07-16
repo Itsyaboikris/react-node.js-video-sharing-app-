@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 	},
 	subscribers: {
-		type: Numder,
+		type: Number,
 		default:0,
 	},
 	subscribedUsers: {
