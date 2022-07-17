@@ -10,7 +10,9 @@ export const updateUser = async (req, res, next) => {
 				new: true
 			});
 
-			res.status(200).json(updatedUser)
+			const {password, ...others} = updatedUser._doc;
+
+			res.status(200).json(others)
 		} catch (error) {
 			next(err)
 		}
@@ -36,6 +38,9 @@ export const deleteUser = async (req, res, next) => {
 export const getUser = async (req, res, next) => {
 	try {
 		const user = await User.findById(req.params.id)
+
+		const {password, ...others} = user._doc;
+
 		res.status(200).json(user);
 	} catch (err) {
 		next(err)
