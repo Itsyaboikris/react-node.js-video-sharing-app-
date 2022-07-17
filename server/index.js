@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 
 import userRoutes from "./routes/users.js";
 import videoRoutes from "./routes/videos.js";
@@ -20,6 +21,7 @@ const connect = () => {
 }
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
