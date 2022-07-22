@@ -82,7 +82,7 @@ export const unsubscribe = async (req, res, next) => {
 
 export const likeVideo = async (req, res, next) => {
 	const id = req.user.id
-	const videoId = req.params.id
+	const videoId = req.params.videoId
 	try {
 		await Video.findByIdAndUpdate(videoId, {
 			$addToSet: {likes: id},
@@ -98,7 +98,7 @@ export const likeVideo = async (req, res, next) => {
 export const dislikeVideo = async (req, res, next) => {
 	try {
 		const id = req.user.id
-		const videoId = req.params.id
+		const videoId = req.params.videoId
 	
 		await Video.findByIdAndUpdate(videoId, {
 			$addToSet: {dislikes: id},
